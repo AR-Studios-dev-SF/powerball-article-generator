@@ -29,18 +29,18 @@ def powerball_article():
     # Check if there was a Powerball winner
     if "None" in jackpot_winners:
         headline = "No Powerball Winner in the Last Drawing"
-        body = f"<p>There was no Powerball winner in the last drawing, which took place on {date}.<p>"
+        body = f"<p>There was no Powerball winner in the last drawing, which took place on {date}.</p>"
     else:
         winner_state = jackpot_winners
         headline = f"There was a Powerball Winner from the state of {winner_state} in the Last Drawing"
-        body = f"<p>The winning Powerball numbers for the last drawing, which took place on {date}, were {winning_numbers}. The winning ticket was sold in {winner_state}.<p>"
+        body = f"<p>The winning Powerball numbers for the last drawing, which took place on {date}, were {winning_numbers}. The winning ticket was sold in {winner_state}.</p>"
 
     # Get information about the next drawing
     next_drawing_date = soup.select_one("#next-drawing .title-date").text.strip()
     jackpot_amount = soup.select_one("#next-drawing .game-jackpot-number").text.strip()
 
     # Build the article body
-    body += f"<p>The next Powerball drawing will take place on {next_drawing_date}, with a potential prize of {jackpot_amount}.<p>"
+    body += f"<p>The next Powerball drawing will take place on {next_drawing_date}, with a potential prize of {jackpot_amount}.</p>"
 
     # Build and return the response
     response_data = {"headline": headline, "body": body}
